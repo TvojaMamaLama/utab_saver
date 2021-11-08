@@ -22,7 +22,7 @@ def send_welcome(message: Message):
 
 @bot.message_handler()
 def send_video(message: Message):
-    video_downloader = VideoDownloader(message.text)
+    video_downloader = VideoDownloader(bot, message)
     video_path: str = video_downloader()
 
     with open(video_path, 'rb') as video:
@@ -31,6 +31,7 @@ def send_video(message: Message):
             data=video,
             timeout=100,
         )
+    bot.send_message(message.chat.id, 'Приятного просмотра!')
 
     os.remove(video_path)
 
