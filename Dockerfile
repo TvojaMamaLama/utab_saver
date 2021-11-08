@@ -9,9 +9,10 @@ RUN apt-get update && \
 ADD requirements.txt /
 
 RUN pip install -r requirements.txt
+RUN pip install gunicorn
 
 WORKDIR /srv
 
 ADD src /srv
 
-CMD python -m gunicorn app:server --bind 0.0.0.0:$PORT
+CMD gunicorn app:server --bind 0.0.0.0:$PORT
