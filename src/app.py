@@ -8,7 +8,6 @@ from telebot.types import Update
 
 from config import BOT_TOKEN
 from config import HEROKU_HOST
-from config import PORT
 from services.video_downloader import VideoDownloader
 
 
@@ -49,6 +48,3 @@ def set_bot_webhook():
     bot.remove_webhook()
     bot.set_webhook(url=f'{HEROKU_HOST}/handler')
     return "!", 200
-
-
-server.run(host="0.0.0.0", port=PORT)

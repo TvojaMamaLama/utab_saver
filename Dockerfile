@@ -2,7 +2,6 @@ FROM python:3.8-slim
 
 ENV BOT_TOKEN ${BOT_TOKEN}
 ENV HEROKU_HOST ${HEROKU_HOST}
-ENV PORT ${PORT}
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends build-essential libffi-dev
@@ -15,4 +14,4 @@ WORKDIR /srv
 
 ADD src /srv
 
-CMD python app.py
+CMD gunicorn --bind 0.0.0.0:${PORT} app:server
