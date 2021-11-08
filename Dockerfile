@@ -14,4 +14,4 @@ WORKDIR /srv
 
 ADD src /srv
 
-CMD gunicorn --bind 0.0.0.0:${PORT} app:server
+CMD gunicorn --bind 0.0.0.0:$PORT app:server
