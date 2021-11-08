@@ -16,5 +16,3 @@ jobs:
           heroku_app_name: "utab-saver"
           heroku_email: ${{secrets.EMAIL}}
           usedocker: true
-    env:
-      BOT_TOKEN: ${{secrets.BOT_TOKEN}}
